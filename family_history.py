@@ -161,8 +161,10 @@ def print_marriages(marriages_dict, people_dict):
         name = value[NAME_INDEX]
         birth_date = value[BIRTH_YEAR_INDEX]
     
-        for key, value in marriages_dict.items():
+        for mkey, mvalue in marriages_dict.items():
+            marriage_date = mvalue[WEDDING_YEAR_INDEX]
             marriage_age = marriage_date - birth_date
+            if 
         
     
 
