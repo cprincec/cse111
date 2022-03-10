@@ -1,7 +1,7 @@
 # Import the csv module so that it can be used
 # to read from the accidents.csv file.
-from __future__ import print_function
 import csv
+
 
 # Column numbers from the accidents.csv file.
 YEAR_COLUMN = 0
@@ -15,67 +15,49 @@ SPEED_COLUMN = 7
 DUI_COLUMN = 8
 FATIGUE_COLUMN = 9
 
+
 def main():
     try:
-    # Prompt the user for a filename and open that text file.
+        # Prompt the user for a filename and open that text file.
         filename = input("Name of file that contains NHTSA data: ")
         with open(filename, "rt") as text_file:
 
             # Prompt the user for a percentage.
             perc_reduc = float(input(
                 "Percent reduction of texting while driving [0, 100]: "))
-            if perc_reduc < 1:
-                    print(f"Error: {perc_reduc} is too low. Please enter a different number.")
 
-            elif perc_reduc > 100:
-                print(f"Error: {perc_reduc} is too high. Please enter a different number.")    
-
-            else: 
-                print()
-                print(f"With a {perc_reduc}% reduction in using a cell",
+            print()
+            print(f"With a {perc_reduc}% reduction in using a cell",
                 "phone while driving, approximately this",
                 "number of injuries and deaths would have",
                 "been prevented in the USA.", sep="\n")
-                print()
-                print("Year, Injuries, Deaths")
+            print()
+            print("Year, Injuries, Deaths")
 
             # Use the csv module to create a reader
             # object that will read from the opened file.
-                reader = csv.reader(text_file)
+            reader = csv.reader(text_file)
 
             # The first line of the CSV file contains column headings
             # and not a student's I-Number and name, so this statement
             # skips the first line of the CSV file.
-                next(reader)
+            next(reader)
 
             # Process each row in the CSV file.
-                for row in reader:
-                    year = row[YEAR_COLUMN]
+            for row in reader:
+                year = row[YEAR_COLUMN]
 
                 # Call the estimate_reduction function.
-                    injur, fatal = estimate_reduction(
+                injur, fatal = estimate_reduction(
                         row, PHONE_COLUMN, perc_reduc)
 
                 # Print the estimated reductions
                 # in injuries and fatalities.
-        
-                    print(year, injur, fatal, sep=", ")
-
-
-    except (FileNotFoundError, PermissionError) as error:
-        print(error)
-        print("Please choose a different file.")
-
-
-
-    except (ValueError) as value_error:
-        print(value_error)
-        print(f"could not convert string to float: {value_error}")
-
-
-    
-
-
+                print(year, injur, fatal, sep=", ")
+    except FileNotFoundError as not_found_error:
+        print(type(not_found_error).__name__,not_found_error, sep=":")
+        print(f"{filename}  does not exist in your directory.")
+        print("Please enter an existing filename.")
 
 
 
