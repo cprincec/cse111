@@ -2,6 +2,10 @@
 # to read from the accidents.csv file.
 import csv
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6f37a0fb89c4b17eaf16712932afe25edb37290
 # Column numbers from the accidents.csv file.
 YEAR_COLUMN = 0
 FATALITIES_COLUMN = 1
@@ -16,14 +20,21 @@ FATIGUE_COLUMN = 9
 
 
 def main():
+<<<<<<< HEAD
     # Prompt the user for a filename and open that text file.
     filename = input("Name of file that contains NHTSA data: ")
     try:
+=======
+    try:
+        # Prompt the user for a filename and open that text file.
+        filename = input("Name of file that contains NHTSA data: ")
+>>>>>>> f6f37a0fb89c4b17eaf16712932afe25edb37290
         with open(filename, "rt") as text_file:
 
             # Prompt the user for a percentage.
             perc_reduc = float(input(
                 "Percent reduction of texting while driving [0, 100]: "))
+<<<<<<< HEAD
             if perc_reduc < 0:
                 print("Number too low")
                 print("Enter a number from within 0 - 100")
@@ -64,6 +75,43 @@ def main():
     except ValueError as val_error:
         print("wrong value")
             
+=======
+
+            print()
+            print(f"With a {perc_reduc}% reduction in using a cell",
+                "phone while driving, approximately this",
+                "number of injuries and deaths would have",
+                "been prevented in the USA.", sep="\n")
+            print()
+            print("Year, Injuries, Deaths")
+
+            # Use the csv module to create a reader
+            # object that will read from the opened file.
+            reader = csv.reader(text_file)
+
+            # The first line of the CSV file contains column headings
+            # and not a student's I-Number and name, so this statement
+            # skips the first line of the CSV file.
+            next(reader)
+
+            # Process each row in the CSV file.
+            for row in reader:
+                year = row[YEAR_COLUMN]
+
+                # Call the estimate_reduction function.
+                injur, fatal = estimate_reduction(
+                        row, PHONE_COLUMN, perc_reduc)
+
+                # Print the estimated reductions
+                # in injuries and fatalities.
+                print(year, injur, fatal, sep=", ")
+    except FileNotFoundError as not_found_error:
+        print(type(not_found_error).__name__,not_found_error, sep=":")
+        print(f"{filename}  does not exist in your directory.")
+        print("Please enter an existing filename.")
+
+
+>>>>>>> f6f37a0fb89c4b17eaf16712932afe25edb37290
 
 def estimate_reduction(row, behavior_key, perc_reduc):
     """Estimate and return the number of injuries and deaths that would
