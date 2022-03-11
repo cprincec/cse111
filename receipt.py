@@ -13,7 +13,7 @@ REQUESTED_QUANTITY_INDEX = 1
 
 def main():
     #call the read_dict fucntion and save its reuturned value as producs_dict.
-    products_dict = read_dict(r"C:\Users\USER\Desktop\byu\Winter 2022\CSE111\cse111\products.csv", PRODUCT_KEY_INDEX)
+    products_dict = read_dict("products.csv", PRODUCT_KEY_INDEX)
 
     print()
     # print("All Products")
