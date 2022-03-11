@@ -119,7 +119,6 @@ def read_dict(filename, key_column_index):
     #return the products dictionary.
     return products_dict
 
-
 def compute_sales_tax(subtotal, rate):
     """Compute the sales tax of the total items ordered at a given rate. 
     Parameters:
