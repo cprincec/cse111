@@ -23,7 +23,7 @@ def main():
     print("Inkom Emporium Stores")
 
     #open and read the reciept.csv file
-    with open(r"C:\Users\USER\Desktop\byu\Winter 2022\CSE111\cse111\request.csv", "rt") as request_file:
+    with open("products.csv", "rt") as request_file:
         subtotal = 0
         total_products = 0
         request_file = csv.reader(request_file)
