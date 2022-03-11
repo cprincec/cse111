@@ -64,8 +64,8 @@ def main():
  
     #handle file not found error for products.csv or request.csv file    
     except FileNotFoundError as not_found_error:
-        print(f"Error: {filename} was not found in your directory.")
-        print("Choose another file.")
+        print("Error: missing file")
+        print(not_found_error)
     
     #Handle permission error for products.csv or request.csv files.
     except PermissionError as no_permission:
@@ -75,7 +75,7 @@ def main():
 
     #Handle invalid dictionary key error for the products dictionary.
     except KeyError as key_error:
-        print(f"Unknown product in the {filename}") 
+        print(f"Error: Unknown product in the {filename}") 
         print(product_num)
 
     #Handle wrong invalid quantity for the request.csv file.
@@ -110,7 +110,6 @@ def read_dict(filename, key_column_index):
 
         #loop through each row of the csv file
         for row in reader:
-            
             #save products index as variable key.
             key = row[key_column_index]
 
