@@ -1,5 +1,5 @@
 import csv
-
+from unicodedata import name
 
 # Each row in the pupils.csv file contains three elements.
 # These are the indexes of the elements in each row.
@@ -7,7 +7,11 @@ GIVEN_NAME_INDEX = 0
 SURNAME_INDEX = 1
 BIRTHDATE_INDEX = 2
 
-read_compound_list("pupils.csv")
+def main():
+    students_list = read_compound_list("pupils.csv")  
+    birthdate = lambda student: student[BIRTHDATE_INDEX]
+    sorted_dates = sorted(students_list, key=birthdate)
+    print_list(sorted_dates)
 
 def read_compound_list(filename):
     """Read the text from a CSV file into a compound list.
@@ -51,3 +55,5 @@ def print_list(compound_list):
     """
     for row in compound_list:
         print(row)
+if __name__ == "__main__":
+    main()
