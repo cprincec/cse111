@@ -7,6 +7,7 @@ GIVEN_NAME_INDEX = 0
 SURNAME_INDEX = 1
 BIRTHDATE_INDEX = 2
 
+read_compound_list("pupils.csv")
 
 def read_compound_list(filename):
     """Read the text from a CSV file into a compound list.
@@ -39,3 +40,14 @@ def read_compound_list(filename):
             compound_list.append(row)
 
     return compound_list
+
+def print_list(compound_list):
+    """Print each item in a compound list
+    
+    Parameters:
+        compound_list: a list containing list of pupils' given name, 
+        surname and date of birth.
+    Return: Nothing. 
+    """
+    for row in compound_list:
+        print(row)
