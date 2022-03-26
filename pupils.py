@@ -1,5 +1,4 @@
 import csv
-from unicodedata import name
 
 # Each row in the pupils.csv file contains three elements.
 # These are the indexes of the elements in each row.
