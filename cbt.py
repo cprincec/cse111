@@ -71,6 +71,7 @@ def print_question(question_bank):
     
         
     for question in question_bank: 
+        print(question)
         
 
 
