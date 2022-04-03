@@ -1,7 +1,7 @@
 import csv
 import tkinter as tk
 
-"""This is a Computer-Based Testing/Exam Program. 
+"""This is a Computer-Based Testing/Exam Program.
 This program is made with in the context of an objective exam for a high school called National Secondary School."""
 
 
@@ -56,7 +56,7 @@ def main():
 
 def create_student_account(name, reg_no, score):
     """Create a dictionary that stores a student's name, score with reg number as the key.
-    
+
     Parameters:
         name: name of a student.
         reg_no: registration number of the student.
@@ -70,7 +70,7 @@ def create_student_account(name, reg_no, score):
 def read_quest_file(filename):
 
     bank = []
-    
+
     with open(filename, "rt") as question_bank:
         reader = csv.reader(question_bank)
         next(reader)
@@ -84,6 +84,21 @@ def read_quest_file(filename):
             bank.append({"question": quest, "option_a": option_a, "option_b": option_b, "option_c": option_c, "option_d": option_d, "answer": answer})
     return bank
 
+def print_question(question_bank):
+    """Print 10 questions one at a time from a question bank 
+    
+    Parameters:
+        question_bank: dictionary of objective questions and options.
+    Return: nothing
+    """
+    question_num = 1
+    #Loop through the question bank and print 10 questions
+    #with heading of question 1, question 2 and so on.
+    
+        
+    for question in question_bank: 
+        print(question)
+        
 
 
 
