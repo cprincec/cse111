@@ -21,9 +21,10 @@ start = input("Start Exam (y/n): ")
 def main():
     students = create_student_account(name, reg_no, score)
     question_bank = read_quest_file(filename)
+    question = print_question(question_bank)
 
     print(students)
-    print(question_bank)
+    print(question)
 
 def create_student_account(name, reg_no, score):
     """Create a dictionary that stores a student's name, score with reg number as the key.
@@ -57,6 +58,20 @@ def read_quest_file(filename):
             "option_c": option_c, "option_d": option_d, "answer": answer})
     return bank
 
+def print_question(question_bank):
+    """Print 10 questions one at a time from a question bank 
+    
+    Parameters:
+        question_bank: dictionary of objective questions and options.
+    Return: nothing
+    """
+    question_num = 1
+    #Loop through the question bank and print 10 questions
+    #with heading of question 1, question 2 and so on.
+    
+        
+    for question in question_bank: 
+        
 
 
 if __name__ == "__main__":
