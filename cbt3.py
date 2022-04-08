@@ -41,19 +41,39 @@ def retrieve_options(bank):
         option_d = question[4]
         return (f"{option_a} {option_b} {option_c} {option_d}")
 
-def show_question(frm_main):
+def show_question(frm_main, frm_lbl_quest):
     bank = read_quest_file(filename)
-    questions = retrieve_questions(bank)
     
-    for _ in range(0,10):
+    
+    for i in range(0,10):
         questions = retrieve_questions(bank)
-    frm_heading = tk.Frame(frm_main, bg="orange")
-    frm_heading.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.07)
-    lbl_heading = tk.Label(frm_heading, text="Subject: Data Processing    |   Class: SS1   |    Time: 1hour", bg= "orange", fg="white", font="Arial 22 bold")
-    lbl_heading.place(relx=0.15, rely=0.3)
-    lbl_quest.config(text=f"1. {questions[0]}\n\n2. {questions[1]}\n\n3. {questions[2]}\n\n4. {questions[3]}\n\n5. {questions[4]}\n\n6. {questions[5]}\n\n7. {questions[6]}\n\n8. {questions[7]}\n\n9. {questions[8]}\n\n10. {questions[9]}\n\n", justify="left", font=("Arial", "16"))
-    lbl_quest.place(relx=0.05, rely=0.08, relwidth=0.9, relheight=0.9)
-    btn_start.destroy()
+    
+    
+    
+        # create a frame for heading label displaying the exam info.
+        frm_heading = tk.Frame(frm_main, bg="orange")
+        frm_heading.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.07)
+
+        # create the heading label displaying the exam info.
+        lbl_heading = tk.Label(frm_heading, text="Subject: Data Processing    |   Class: SS1   |    Time: 1hour", bg= "orange", fg="white", font="Arial 22 bold")
+        lbl_heading.place(relx=0.15, rely=0.3)
+
+        # Display question from question bank.
+        lbl_quest.config(text=f"{questions[0]}", justify="left", font=("Arial", "18"))
+        lbl_quest.place(relx=0.01, rely=0.01, relwidth=0.9, relheight=0.9)
+
+
+        # Create next button.
+        btn_next = tk.Button(frm_main, text="Next", font=("Comic Sans MS", 15, BOLD), bg="orange", fg="white", border=2, command=lambda: show_question(frm_main))
+        btn_next.place(relx=0.7, rely=0.95, anchor="s", relwidth=0.1, relheight=0.05) 
+
+        # Create back button.
+        btn_back = tk.Button(frm_main, text="Back", font=("Comic Sans MS", 15, BOLD), bg= "orange", fg="white", border=2, command=lambda: show_question(frm_main))
+        btn_back.place(relx=0.3, rely=0.95, anchor="s", relwidth=0.1, relheight=0.05) 
+
+        # Remove/wipe the "Click to start" button form the screen so that the questions
+        # can be displayed on the screen.
+        btn_start.destroy()
         
 
 
@@ -67,11 +87,16 @@ frm_main.place(relwidth=1, relheight=1)
 
 
 # Create start button.
-btn_start = tk.Button(frm_main, text="Click to start", font=("Comic Sans MS", 14, BOLD), fg="green", border=5, command=lambda: show_question(frm_main))
+btn_start = tk.Button(frm_main, text="Click to start", font=("Comic Sans MS", 14, BOLD), fg="green", border=5, command=lambda: show_question(frm_main, frm_lbl_quest))
 btn_start.place(relx=0.5, rely=0.95, anchor="s", relwidth=0.15, relheight=0.05)
 
+
+# create a frame for questions label.
+frm_lbl_quest = tk.Frame(frm_main, bg="white")
+frm_lbl_quest.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.8)
+
 #create a label for the questions.
-lbl_quest = tk.Label(frm_main, text=info, bg="white", font=("Arial", "20", "bold"))
+lbl_quest = tk.Label(frm_lbl_quest, text=info, bg="white", font=("Arial", "20", "bold"))
 lbl_quest.place(relx=0.05, rely=0.05, relwidth=0.9, relheight=0.8)
 
 root.mainloop()
