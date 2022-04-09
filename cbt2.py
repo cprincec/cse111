@@ -125,7 +125,7 @@ def populate_frames(frm_main, frm_questions, question_bank, choices, score):
     # create a button to be clicked
     # when ready to begin the exam.
     btn_begin = tk.Button(frm_main, text= "Begin Exam", bg= "blue", fg="white", 
-                width=20, font= ("Heveltica", 20, "bold"), command=lambda: show_frame(frm_questions), command=print_question(question_bank, choices, score))
+                width=20, font= ("Heveltica", 20, "bold"), command=lambda: show_frame(frm_questions))
 
     lbl_info.pack(pady=150)
     btn_begin.pack()
