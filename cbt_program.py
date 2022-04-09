@@ -196,25 +196,26 @@ def show_question(frm_main, frm_lbl_quest, btn_start, lbl_quest):
 
 
     def show_next_question(btn_next, btn_submit, lbl_quests, optiona_button,  optionb_button, optionc_button, optiond_button):
+        """This function displays the next question in the question bank and its corresponding options."""
+        
         global CURRENT
         bank = read_quest_file(filename)
         questions = retrieve_questions(bank)
         options = retrieve_options(bank)
 
-        
+        # increase current question tracker index.
         CURRENT += 1
         
-        # Display question from question bank.
+        # Display question next from question bank.
         lbl_quests.config(text=f"{questions[CURRENT]}", justify="left", font=("Arial", "18"))
-        
-        
-        
-        
+
+        # modify the options labels to correspond with the current question on the screen.        
         optiona_button.config(text=options[CURRENT][0], value=options[CURRENT][0])   
         optionb_button.config(text=options[CURRENT][1], value=options[CURRENT][1])
         optionc_button.config(text=options[CURRENT][2], value=options[CURRENT][2])
         optiond_button.config(text=options[CURRENT][3], value=options[CURRENT][3])
 
+        # Replace the NEXT button with the SUBMIT button when the user gets to the last question.
         if CURRENT == 10:
             # Remove the 'Next' button.
             btn_next.place_forget()
@@ -224,33 +225,40 @@ def show_question(frm_main, frm_lbl_quest, btn_start, lbl_quest):
             
 
     def show_previous_question(btn_submit, btn_next, lbl_quests, optiona_button,  optionb_button, optionc_button, optiond_button):
+        """This function displays the previous question in the question bank and its corresponding options."""
         global CURRENT
         bank = read_quest_file(filename)
         questions = retrieve_questions(bank)
         options = retrieve_options(bank)
 
-    
+
+        # this will screen displays the first question when the user clicks the PREVIOUS button
+        # while on the first question.
         if CURRENT < 0:
             show_question(frm_main)     
+        
         elif CURRENT > 0 and CURRENT <= 10:
             CURRENT -= 1
             
-            # Display question from question bank.
+            # Display previous question from question bank.
             lbl_quests.config(text=f"{questions[CURRENT]}", justify="left", font=("Arial", "18"))
             
-            
+            # modify the options labels to correspond with the current question on the screen.
             optiona_button.config(text=options[CURRENT][0], value=options[CURRENT][0])   
             optionb_button.config(text=options[CURRENT][1], value=options[CURRENT][1])
             optionc_button.config(text=options[CURRENT][2], value=options[CURRENT][2])
             optiond_button.config(text=options[CURRENT][3], value=options[CURRENT][3]) 
             
+            # Replace the SUBMIT button with the NEXT button when the user clicks PREVIOUS while on the last question.
             btn_submit.place_forget()
             btn_next.place(relx=0.7, rely=0.95, anchor="s", relwidth=0.1, relheight=0.05)
             
 
 
     def show_score(frm_heading, lbl_quests, btn_next, btn_back, optiona_button,  optionb_button, optionc_button, optiond_button, btn_submit):
+        """This function will Clear all questions and buttons from the screen and display the user's total score"""
         global SCORE
+        # delete all buttons and headings.
         optiona_button.destroy()
         optionb_button.destroy()
         optionc_button.destroy()
@@ -260,11 +268,17 @@ def show_question(frm_main, frm_lbl_quest, btn_start, lbl_quest):
         btn_back.destroy()
         btn_submit.destroy()
         
-        
+        # Display Exam score on the screen.
         lbl_quests.config(text=f"You have Successfully Submitted the exam.\n\n\n\n\n\n Your Total Score is {SCORE} out of 10", font="times 18 bold", justify= "center")
 
         
     def compute_score(user_answer):
+        """Calculate the users score given each option selected per question.
+        
+        Parameter:
+            User_answer: value of option selected using the radio buttons per question
+        Return: Score.
+        """
         global CURRENT
         global SCORE
         bank = read_quest_file(filename)
