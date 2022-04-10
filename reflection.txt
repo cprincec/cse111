@@ -1,0 +1,27 @@
+Please respond thoroughly (at least two sentences for each question) to
+the following three questions.
+
+1. Describe an experience you had this semester where you saw the power of
+functions.
+The experience in my final project really exposed me to power of fucntions especially my own defined functions.
+In the project a had about nine different fucntions and eache were linked to different buttons to peroform
+various thing which at the end made my computer based exam program come to life.
+With the use of my functions, I didn't even need much libraries or modules to make my program.
+
+
+2. In your judgment, what is the value of test functions?
+Test function provides a way of assuring us that the result of a function is 100% true or correct.
+This includes even when the function is used by another person.
+
+
+3. Describe your process for troubleshooting and fixing a program that
+has a problem. What is one thing you can do to improve your process?
+
+I remember when i was working on calculator program and i was having errors on my figures.
+initially I started looking at my code line by line to see where the error came from but it did not work.
+I had to use the deug and run in vs code, this enable me to run my programa and see the values stored 
+in every variable, which helped me find out the exact line where used the wrong operator,
+I was then able to fix the problem.
+i need to always use the run and debug in vs code to find problems with my programs faster.
+
+

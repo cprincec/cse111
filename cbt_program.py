@@ -191,9 +191,6 @@ def show_question(frm_main, frm_lbl_quest, btn_start, lbl_quest):
     lbl_quest.destroy()
     
 
-   
-        
-
 
     def show_next_question(btn_next, btn_submit, lbl_quests, optiona_button,  optionb_button, optionc_button, optiond_button):
         """This function displays the next question in the question bank and its corresponding options."""
